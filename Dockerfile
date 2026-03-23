@@ -1,26 +1,29 @@
-# 1. 파이썬 베이스 이미지 선택
 FROM python:3.11-slim
 
-# 2. 작업 디렉토리 설정
 WORKDIR /app
 
-# 3. 필요한 시스템 패키지 설치 (Poetry 설치용)
-RUN apt-get update && apt-get install -y curl && \
-    curl -sSL https://install.python-poetry.org | python3 - && \
-    apt-get clean
+# 빌드 도구 설치
+RUN apt-get update && apt-get install -y \
+    curl \
+    build-essential \
+    && apt-get clean
 
-# 4. Poetry 경로 설정
+# Poetry 설치
+RUN curl -sSL https://install.python-poetry.org | python3 -
 ENV PATH="/root/.local/bin:$PATH"
 
-# 5. 의존성 파일 먼저 복사 (캐싱 활용)
-COPY pyproject.toml poetry.lock* ./
+# [수정된 부분] pyproject.toml 뿐만 아니라 README.md도 미리 복사합니다.
+# lock 파일이 없을 수도 있으므로 *를 붙여줍니다.
+COPY pyproject.toml poetry.lock* README.md ./
 
-# 6. 라이브러리 설치 (가상환경 생성 안 함)
+# 의존성 설치 (README가 있어서 이제 에러가 나지 않습니다)
 RUN poetry config virtualenvs.create false && \
-    poetry install --no-interaction --no-ansi
+    poetry install --no-interaction --no-ansi --no-root
 
-# 7. 나머지 소스 코드 복사
+# 나머지 소스 코드 복사
 COPY . .
 
-# 8. 앱 실행 (포트는 본인의 앱 설정에 맞게 수정하세요)
+# 전체 설치
+RUN poetry install --no-interaction --no-ansi
+
 CMD ["python", "main.py"]
