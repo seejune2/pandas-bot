@@ -126,3 +126,6 @@ demo.launch()
 # - LangChain 공식 문서: https://python.langchain.com/en/latest/index.html
 # - Gradio 공식 문서: https://gradio.app/get_started
 # - OpenAI API 문서: https://platform.openai.com/docs/api-reference
+# - Python 코드 실행 시 보안에 주의해야 합니다. 위험한 코드 실행을 허용하는 경우, 악의적인 코드가 실행될 수 있으므로 신뢰할 수 있는 데이터와 질문만 사용해야 합니다.
+# - 에러 처리 및 예외 처리를 적절히 구현하여 사용자 경험을 향상시키는 것이 좋습니다.
+# - LangChain의 에이전트는 다양한 도구와 통합할 수 있으므로, 필요에 따라 다른 도구를 추가하여 기능을 확장할 수 있습니다.
