@@ -87,7 +87,6 @@ spec:
         workspace: source
       - name: basic-auth # GitOps 레포 푸시 권한용
         workspace: basic-auth
->>>>>>> 511701586880b5a6e69832e8c13c43f43dfcd4ba
 
   workspaces:
   - name: source
@@ -106,4 +105,3 @@ spec:
       items: 
         - key: .dockerconfigjson
           path: config.json
->>>>>>> 511701586880b5a6e69832e8c13c43f43dfcd4ba
