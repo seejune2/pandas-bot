@@ -16,7 +16,7 @@ spec:
     value: '{{ revision }}'
   # [수정] 태그를 latest 대신 $(params.revision)으로 쓰는 것이 GitOps의 정석입니다.
   - name: image_url
-    value: "registry.ocp.test.com:5000/demo/pandas-bot:$(params.revision)"
+    value: "registry.ocp.test.com:5000/demo/pandas-bot:{{ revision }}"
   - name: gitops_repo_url
     value: "https://github.com/seejune2/pandas-bot-gitops.git"
   pipelineSpec:
