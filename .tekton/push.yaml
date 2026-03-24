@@ -16,15 +16,9 @@ spec:
     value: '{{ revision }}'
   # [수정] 태그를 latest 대신 $(params.revision)으로 쓰는 것이 GitOps의 정석입니다.
   - name: image_url
-<<<<<<< HEAD
-    value: "image-registry.openshift-image-registry.svc:5000/demo/pandas-bot:latest"
-  #  value: "registry.ocp.test.com:5000/demo/pandas-bot:latest"
-=======
     value: "registry.ocp.test.com:5000/demo/pandas-bot:$(params.revision)"
   - name: gitops_repo_url
     value: "https://github.com/seejune2/pandas-bot-gitops.git"
-    
->>>>>>> 511701586880b5a6e69832e8c13c43f43dfcd4ba
   pipelineSpec:
     params:
     - name: repo_url
@@ -59,15 +53,6 @@ spec:
       workspaces:
       - name: source
         workspace: source
-<<<<<<< HEAD
-      # - name: dockerconfig # 도커 인증 정보가 담긴 워크스페이스
-      #   workspace: docker-config # 도커 인증 정보가 담긴 워크스페이스
-  
-    workspaces:
-    - name: source
-    - name: basic-auth
-    # - name: docker-config # 도커 인증 정보 워크스페이스
-=======
       - name: dockerconfig 
         workspace: docker-config 
 
@@ -115,15 +100,6 @@ spec:
   - name: basic-auth
     secret:
       secretName: '{{ git_auth_secret }}'
-<<<<<<< HEAD
-  # [추가] 아까 만든 시크릿을 docker-config 워크스페이스에 연결
-  # - name: docker-config
-  #   secret:
-  #     secretName: "my-registry-secret"
-  #     items:
-  #       - key: .dockerconfigjson   # 시크릿 안에 들어있는 실제 키 이름
-  #         path: config.json        # 컨테이너 안에서 보일 파일 이름
-=======
   - name: docker-config
     secret:
       secretName: "my-registry-secret"
