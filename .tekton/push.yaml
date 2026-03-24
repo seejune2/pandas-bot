@@ -18,7 +18,7 @@ spec:
   - name: image_url
     value: "registry.ocp.test.com:5000/demo/pandas-bot:{{ revision }}"
   - name: gitops_repo_url
-    value: "https://github.com/seejune2/pandas-bot-gitops.git"
+    value: "https://github.com/seejune2/pandas-bot-gitops"
   pipelineSpec:
     params:
     - name: repo_url
