@@ -24,7 +24,7 @@ spec:
     - name: revision
     - name: image_url
     tasks:
-    - name: fetch-repository
+    - name: fetch-repository:q
       params:
       - name: url
         value: $(params.repo_url)
