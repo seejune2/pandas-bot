@@ -26,7 +26,7 @@ spec:
     - name: image_url
     - name: gitops_repo_url # [추가] 하위 태스크로 전달하기 위해 명시
     tasks:
-    - name: fetch-repository:q
+    - name: fetch-repository
       params:
       - name: url
         value: $(params.repo_url)
